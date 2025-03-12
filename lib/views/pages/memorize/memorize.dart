@@ -33,18 +33,15 @@ class MemorizeState extends State<Memorize> {
   }
 
   List<String> getSuggestions() {
-    List<String> suggestions =
-        questionWords.map((word) => word.meaning).toList();
-    suggestions = suggestions.toSet().toList();
+    List<String> distinctMeanings =
+        questionWords.map((word) => word.meaning).toSet().toList();
     String correctAnswer = questionWords[questionIndex].meaning;
-    suggestions.removeWhere(
-        (answer) => questionWords[questionIndex].meaning == answer);
-    suggestions.shuffle();
-    List<String> targetSuggestions = suggestions.take(3).toList();
-    targetSuggestions.add(correctAnswer);
-    targetSuggestions.shuffle();
-
-    return targetSuggestions;
+    distinctMeanings.remove(correctAnswer);
+    distinctMeanings.shuffle();
+    List<String> wrongOptions = distinctMeanings.take(3).toList();
+    List<String> options = [...wrongOptions, correctAnswer];
+    options.shuffle();
+    return options;
   }
 
   void getQuestionWords() {

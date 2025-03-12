@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BaseButton(
-              label: 'テストを始める',
+              label: 'テスト開始',
               onPressed: () async {
                 List<String> categories = await fetchCategories();
                 moveMemorizeStart(context, categories);

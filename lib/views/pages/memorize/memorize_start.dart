@@ -76,25 +76,37 @@ class MemorizeStartState extends State<MemorizeStart> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30, 0, 30, 30),
+                        margin: const EdgeInsets.fromLTRB(120, 0, 120, 30),
                         child: TextField(
                           controller: countController,
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      DropdownButton<String>(
-                        value: category,
-                        items: widget.categories.map((String category) {
-                          return DropdownMenuItem<String>(
-                            value: category,
-                            child: Text(category),
-                          );
-                        }).toList(),
-                        onChanged: (value) => setCategory(value!),
+                      const Text(
+                        'カテゴリ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      const SizedBox(height: 10),
+                      Container(
+                        color: Colors.white.withOpacity(0.5),
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.fromLTRB(19, 0, 10, 0),
+                        child: DropdownButton<String>(
+                          value: category,
+                          items: widget.categories.map((String category) {
+                            return DropdownMenuItem<String>(
+                              value: category,
+                              child: Text(category),
+                            );
+                          }).toList(),
+                          onChanged: (value) => setCategory(value!),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       BaseButton(
                         label: '開始',
                         onPressed: () async {
