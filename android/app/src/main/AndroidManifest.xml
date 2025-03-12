@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="work_words"
+        android:label="仕事単語帳"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
